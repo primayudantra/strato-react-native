@@ -4,23 +4,70 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TextInput,
   Dimensions,
-  Button
+  ScrollView
 } from 'react-native';
 
+import { Col, Row, Grid } from "react-native-easy-grid";
+import { Card, ListItem, Button } from 'react-native-elements'
 
-var width = Dimensions.get('window').width;
+
+const { height, width } = Dimensions.get('window');
 
 export default class Home extends Component {
 
+  constructor(){
+    super();
+    this.state = {
+      entries: []
+    }
+  }
+
+  goTo(data){
+    const {navigate} = this.props.navigation;
+    navigate('List',{"token":"test"})
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Home
-        </Text>
-      </View>
+          <View style={{flex:1}}>
+          <ScrollView>
+                <Card
+                title='Studio'>
+                   <Image
+                    source={require('../../static/studio.jpeg')}
+                  />
+                <Text style={{marginBottom: 10,textAlign : 'center'}}>
+                  Book Now Your Studio
+                </Text>
+                <Button
+                  icon={{name: 'code'}}
+                  backgroundColor='#d0b2e8'
+                  onPress={this.goTo.bind(this)}
+                  fontFamily='Lato'
+                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                  title='VIEW NOW' />
+              </Card>
+              <Card
+                title='Studio Recording'>
+                <Image
+                    source={require('../../static/studio.jpeg')}
+                  />
+                <Text style={{marginBottom: 10}}>
+                  Book Now Your Studio Recording
+                </Text>
+                <Button
+                  icon={{name: 'code'}}
+                  backgroundColor='#03A9F4'
+                  onPress={this.goTo.bind(this)}
+                  fontFamily='Lato'
+                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                  title='VIEW NOW' />
+              </Card>
+          </ScrollView>
+        </View>
     );
   }
 }
@@ -35,11 +82,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   buttonLogin:{
-    width:100,
-    flexDirection: 'row',
-    alignSelf: 'stretch',
-    height:70,
-   justifyContent: 'center',
    alignItems: 'center'
   },
   container: {

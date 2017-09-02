@@ -38,6 +38,7 @@ export default class Login extends Component {
         <Button
           title="Login"
           onPress={this.goTo.bind(this)}
+          width={500}
           style={styles.buttonLogin}
           color="#ad1d0a"
           accessibilityLabel="Learn more about this purple button"
@@ -57,11 +58,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   buttonLogin:{
-    width:100,
-    flexDirection: 'row',
-    alignSelf: 'stretch',
-    height:70,
-   justifyContent: 'center',
    alignItems: 'center'
   },
   container: {
